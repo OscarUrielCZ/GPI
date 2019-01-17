@@ -15,6 +15,18 @@ const date = {
     desc: 'Fecha de la instalación del programa'
 };
 
+const filter = {
+  alias: 'f',
+  default: '',
+  desc: 'Filtra los resultados que deseas ver'
+};
+
+const command = {
+    demand: true,
+    alias: 'c',
+    desc: 'Comando a agregar'
+};
+
 const argv = require('yargs')
     .command('nuevo', 'Agrega un programa nuevo', {
         name,
@@ -28,6 +40,13 @@ const argv = require('yargs')
     })
     .command('borrar', 'Borra un programa de tu lista', {
         name
+    })
+    .command('listar', 'Listar los programas guardados', {
+      filter
+    })
+    .command('comando', 'Agrega un comando a un programa', {
+        name,
+        command
     })
     .help()
     .argv;

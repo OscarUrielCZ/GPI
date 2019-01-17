@@ -15,7 +15,7 @@ switch (command) {
         break;
 
     case 'listar':
-        let listed = prog.list();
+        let listed = prog.list(argv.filter);
 
         for (let p of listed) {
             prog.printProgram(p);
@@ -26,6 +26,11 @@ switch (command) {
     case 'borrar':
         let removed = prog.remove(argv.name);
         console.log(removed);
+        break;
+
+    case 'comando':
+        let newcommand = prog.addCommand(argv.name, argv.command);
+        console.log(newcommand);
         break;
 
     default:

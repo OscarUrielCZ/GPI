@@ -27,7 +27,9 @@ const getIndexByName = name => {
     return allPrograms.findIndex(prog => prog.name.toLowerCase() == name.toLowerCase());
 };
 
-const filter = constrain => {
+const list = constrain => {
+    loadDB();
+
     let regexp = new RegExp(constrain, 'i');
     let result = allPrograms.filter(prog => prog.name.match(regexp));
 
@@ -88,12 +90,6 @@ const remove = name => {
     return true;
 };
 
-const list = () => {
-    loadDB();
-
-    return allPrograms;
-};
-
 const printProgram = program => {
     console.log(program.name.green);
     if (program.date) {
@@ -102,6 +98,25 @@ const printProgram = program => {
     if (program.desc) {
         console.log('  Especificaciones:', program.desc);
     }
+    if (program.commands.length) {
+        console.log('  Comandos: ');
+        for (let c of program.commands) {
+            console.log('    >', c);
+        }
+    }
+};
+
+const addCommand = (name, command) => {
+    loadDB();
+
+    if (!exists(name)) {
+        return false;
+    }
+
+    allPrograms[getIndexByName(name)].commands.push(command);
+    saveDB();
+
+    return true;
 };
 
 module.exports = {
@@ -109,5 +124,6 @@ module.exports = {
     update,
     list,
     printProgram,
-    remove
+    remove,
+    addCommand
 };

@@ -1,1 +1,1 @@
-[{"name":"nodejs","date":"18/nov/2018","desc":"Intalación desde la página oficial de node","commands":[]}]
+[{"name":"nodejs","date":"18/nov/2018","desc":"Intalación desde la página oficial de node","commands":["curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash - # instalacion (paso1)","sudo apt-get install -y nodejs # instalación (paso2)","node app.js # ejecutar programa"]},{"name":"chromium-browser","date":"18/nov/2018","desc":"Navegador web instaldo desde el gestor de seftware","commands":[]}]
